@@ -150,11 +150,12 @@
       <DependentUpon>201906200629511_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Flower.cs" />
+    <Compile Include="Models\Entities\Flower.cs" />
     <Compile Include="Models\FlowersDbContext.cs" />
-    <Compile Include="Models\Manager.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderFlowers.cs" />
+    <Compile Include="Models\Entities\Manager.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\OrderFlowers.cs" />
+    <Compile Include="Models\ResourceModels\ManagerResourceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

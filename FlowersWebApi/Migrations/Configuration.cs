@@ -1,6 +1,7 @@
 namespace FlowersWebApi.Migrations
 {
     using FlowersWebApi.Models;
+    using FlowersWebApi.Models.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

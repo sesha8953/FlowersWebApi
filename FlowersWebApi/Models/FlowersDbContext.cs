@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowersWebApi.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -17,10 +18,5 @@ namespace FlowersWebApi.Models
         {
 
         }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
     }
 }

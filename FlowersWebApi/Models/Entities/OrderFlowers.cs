@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FlowersWebApi.Models
+namespace FlowersWebApi.Models.Entities
 {
     public class OrderFlowers
     {

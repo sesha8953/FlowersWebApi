@@ -36,14 +36,17 @@ namespace FlowersWebApi.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post(string firstName, string lastName)
+        public IHttpActionResult Post(Manager manager)
         {
-            var manager = new Manager
+            if (manager == null)
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Bdate = DateTime.Now
-            };
+                return BadRequest("Менеджер не был передан");
+            }
+
+            if (DbContext.Managers.Any(m => m.FirstName == manager.FirstName && m.LastName == manager.LastName))
+            {
+                return Content(HttpStatusCode.Conflict, new { Message = "Менеджер с таким именем и фамилией уже существует" });
+            }
 
             DbContext.Managers.Add(manager);
             DbContext.SaveChanges();
@@ -63,11 +66,27 @@ namespace FlowersWebApi.Controllers
             return Content(HttpStatusCode.OK, new { Message = "Менеджер удалён!!" });
         }
 
-        //[HttpPut]
-        //public IHttpActionResult UpdateManagers()
-        //{
-        //    return ;
-        //}
+        [HttpPut]
+        public IHttpActionResult UpdateManagers(int id, Manager manager)
+        {
+            if (manager == null)
+            {
+                return BadRequest("Менеджер не был передан");
+            }
+
+            var entity = DbContext.Managers.Find(id);
+            if (entity == null)
+            {
+                return Content(HttpStatusCode.NotFound, new { Message = $"Менеджер с id = {id} не найден"});
+            }
+
+            entity.Bdate = manager.Bdate;
+            entity.FirstName = manager.FirstName;
+            entity.LastName = manager.LastName;
+            DbContext.SaveChanges();
+            
+            return Content(HttpStatusCode.OK, new { Message = $"Данные о менеджеру с id = {id} обновлены." });
+        }
 
     }
 }
